@@ -46,12 +46,13 @@ public class MainActivity extends AppCompatActivity {
             chronometer.stop();
 
         }
+
         SharedPreferences Records = getSharedPreferences("data", MODE_PRIVATE);
-        time = Records.getString("time", "00:00");
-        tasktype = Records.getString("tasktype", "....");
+        String time1 = Records.getString("time", "00:00");
+        String tasktype1 = Records.getString("tasktype", "....");
 
 
-        tip.setText("You spend " + time + " on " + tasktype + " last time");
+        tip.setText("You spend " + time1 + " on " + tasktype1 + " last time");
 
         Start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,10 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
                 editor.putString("time", time);
                 editor.putString("tasktype", tasktype);
-                if (tasktype.isEmpty()) ;//
-                {
-                    editor.putString("tasktype", "....");
-                }
                 editor.apply();
             }
         });
